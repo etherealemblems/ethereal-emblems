@@ -6,150 +6,206 @@
 
 <title>Ethereal Emblems</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-/* PASTE CSS HERE */
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-background-color:#f4f2f7;
-font-family:'Poppins', sans-serif;
-color:#2e294e;
+* {
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
+body {
+font-family:'Poppins', sans-serif;
+background:#f4f2f7;
+color:#2d2152;
+}
+
+/* NAV */
 .navbar {
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 70px;
-background:#fff;
+padding:20px 60px;
+background:white;
 }
 
-.logo-box {
-width:75px;
-height:75px;
-background:#d9c8ee;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-border-radius:6px;
-color:white;
+.logo {
+font-weight:500;
 }
-
-.nav-links { display:flex; gap:40px; }
 
 .nav-links a {
+margin:0 20px;
 text-decoration:none;
-font-size:13px;
-letter-spacing:1px;
 color:#3c355f;
+font-size:13px;
 }
 
-.nav-right { display:flex; gap:18px; align-items:center; }
-
-.user {
-width:32px;
-height:32px;
-background:#f07c57;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-}
-
-.cart { position:relative; }
-
-.cart span {
-position:absolute;
-top:-7px;
-right:-10px;
-background:#2d2152;
-color:white;
-font-size:10px;
-padding:2px 6px;
-border-radius:50%;
-}
-
+/* HERO */
 .hero {
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:100px 90px;
+padding:90px 80px;
 }
 
-.hero-left { max-width:520px; }
-
-.hero-left h1 {
+.hero h1 {
 font-family:'Playfair Display', serif;
-font-size:76px;
-color:#2d2152;
-margin-bottom:25px;
+font-size:70px;
 }
 
-.hero-left p {
-font-size:14px;
-line-height:1.85;
+.hero p {
+margin:20px 0;
+max-width:400px;
 color:#5f5a73;
-margin-bottom:35px;
 }
 
-.hero-left button {
+.hero button {
 background:linear-gradient(90deg,#7c4dff,#a86cf7);
-padding:14px 32px;
 border:none;
-border-radius:30px;
+padding:12px 25px;
 color:white;
+border-radius:25px;
+}
+
+/* PRODUCTS */
+.products {
+padding:80px;
+}
+
+.products h2 {
+font-family:'Playfair Display', serif;
+margin-bottom:40px;
+}
+
+.grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card {
+background:white;
+padding:20px;
+border-radius:12px;
+text-align:center;
+transition:0.3s;
+}
+
+.card:hover {
+transform:translateY(-5px);
+}
+
+.card img {
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.card h3 {
+font-size:16px;
+margin-bottom:5px;
+}
+
+.card p {
+color:#777;
+}
+
+.card button {
+margin-top:10px;
+background:#7c4dff;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:20px;
 cursor:pointer;
 }
 
-.hero-right h2 {
-font-family:'Playfair Display', serif;
-font-size:70px;
-color:#2c2c2c;
+/* FOOTER */
+footer {
 text-align:center;
+padding:40px;
+font-size:12px;
+color:#888;
 }
 </style>
-
 </head>
 
 <body>
 
+<!-- NAV -->
 <header class="navbar">
-<div class="logo-box">
-✿
-<div style="font-size:9px;">Ethereal Emblems</div>
-</div>
+<div class="logo">Ethereal Emblems</div>
 
 <nav class="nav-links">
 <a href="#">HOME</a>
-<a href="#">SHOP</a>
-<a href="#">LOGIN</a>
+<a href="#shop">SHOP</a>
 </nav>
-
-<div class="nav-right">
-<div class="user">V</div>
-<div class="cart">🛍<span>0</span></div>
-</div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-<div class="hero-left">
+<div>
 <h1>Ethereal<br>Emblems</h1>
-
 <p>
-Each piece is thoughtfully handcrafted using genuine, natural stones, shells and sea glass making every design as unique as the person who wears it. As a small, online only business, we take pride in creating meaningful jewelry with care and intention, focusing on quality over quantity. From the selection of stones to the final details of our creations that are made to celebrate individuality and bring a touch of nature’s elegance into everyday life.
+Each piece is thoughtfully handcrafted using genuine, natural stones, shells and Sea glass making every design as unique as the person who wears it. As a small, online only business, we take pride in creating meaningful jewelry with care and intention, focusing on quality over quantity. From the selection of stones to the final details of our creations that are made to celebrate individuality and bring a touch of nature's elegance into everyday life.
 </p>
 
-<button>Shop the Collection</button>
+<button onclick="document.getElementById('shop').scrollIntoView()">
+Shop the Collection
+</button>
 </div>
 
-<div class="hero-right">
-<h2>Coming<br>Soon</h2>
+<div>
+<h2>Coming Soon</h2>
 </div>
 </section>
 
+<!-- SHOP -->
+<section id="shop" class="products">
+<h2>Shop</h2>
+
+<div class="grid">
+
+<!-- PRODUCT 1 -->
+<div class="card">
+<img src="https://via.placeholder.com/300">
+<h3>Sea Glass Necklace</h3>
+<p>$25</p>
+
+<button onclick="window.open('YOUR_STRIPE_LINK_1','_blank')">
+Buy Now
+</button>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="card">
+<img src="https://via.placeholder.com/300">
+<h3>Shell Necklace </h3>
+<p>$10</p>
+
+<button onclick="window.open('https://buy.stripe.com/test_aFa4gz5Td84mbFFee5dZ600')">
+Buy Now
+</button>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="card">
+<img src="https://via.placeholder.com/300">
+<h3>Crystal Pendant</h3>
+<p>$30</p>
+
+<button onclick="window.open('YOUR_STRIPE_LINK_3','_blank')">
+Buy Now
+</button>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Ethereal Emblems
+</footer>
+
 </body>
 </html>
+
