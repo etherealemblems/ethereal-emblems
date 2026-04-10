@@ -25,202 +25,244 @@ body {
  color:#2d2152;
 }
 
+/* FADE IN */
+.fade-in {
+opacity:0;
+transform:translateY(20px);
+animation:fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+to {
+opacity:1;
+transform:translateY(0);
+}
+}
+
 /* NAVBAR */
 .navbar {
- display:flex;
- justify-content:space-between;
- align-items:center;
- padding:20px 70px;
- background:white;
+display:flex;
+justify-content:center;
+padding:30px 20px 10px;
 }
 
 /* LOGO */
-.logo {
- background:#cbb4d4;
- padding:12px;
- border-radius:6px;
- display:flex;
- align-items:center;
- justify-content:center;
+.logo img {
+height:95px;
+animation:glow 3s ease-in-out infinite alternate;
 }
 
-.logo img {
- height:70px;
- object-fit:contain;
+@keyframes glow {
+from { filter:drop-shadow(0 0 5px rgba(200,180,255,0.4)); }
+to { filter:drop-shadow(0 0 20px rgba(200,180,255,0.9)); }
 }
 
 /* NAV LINKS */
+.nav-links {
+text-align:center;
+margin-bottom:30px;
+}
+
 .nav-links a {
- margin:0 25px;
- text-decoration:none;
- font-size:13px;
- letter-spacing:1px;
- color:#3c355f;
+margin:0 15px;
+text-decoration:none;
+font-size:12px;
+letter-spacing:2px;
+color:#3c355f;
+}
+
+.nav-links a:hover {
+opacity:0.6;
 }
 
 /* HERO */
 .hero {
- display:flex;
- justify-content:space-between;
- padding:90px 80px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:80px 60px;
+flex-wrap:wrap;
 }
 
-.hero h1 {
- font-family:'Playfair Display', serif;
- font-size:70px;
+.hero-text {
+max-width:500px;
 }
 
-.hero p {
- margin:20px 0;
- max-width:400px;
- color:#5f5a73;
+.hero-text h1 {
+font-family:'Playfair Display', serif;
+font-size:80px;
+line-height:0.95;
 }
 
-.hero button {
- background:linear-gradient(90deg,#7c4dff,#a86cf7);
- border:none;
- padding:12px 25px;
- color:white;
- border-radius:25px;
- cursor:pointer;
+.hero-text p {
+margin:25px 0;
+color:#6d6790;
+font-size:14px;
+line-height:1.7;
+}
+
+.hero-text button {
+background:#7c4dff;
+border:none;
+padding:12px 25px;
+color:white;
+cursor:pointer;
+border-radius:4px;
+transition:0.3s;
+}
+
+.hero-text button:hover {
+background:#a86cf7;
+transform:scale(1.05);
+}
+
+.hero-image {
+font-family:'Playfair Display', serif;
+font-size:36px;
+color:#c2b6e3;
+font-style:italic;
 }
 
 /* PRODUCTS */
 .products {
- padding:80px;
+padding:80px 60px;
 }
 
 .products h2 {
- font-family:'Playfair Display', serif;
- margin-bottom:40px;
+font-family:'Playfair Display', serif;
+font-size:40px;
+margin-bottom:50px;
+text-align:center;
 }
 
+/* GRID */
 .grid {
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
- gap:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
 }
 
+/* CARD */
 .card {
- background:white;
- padding:20px;
- border-radius:12px;
- text-align:center;
- transition:0.3s;
+background:rgba(255,255,255,0.6);
+padding:20px;
+border-radius:6px;
+backdrop-filter:blur(10px);
+text-align:center;
+transition:0.4s;
 }
 
 .card:hover {
- transform:translateY(-5px);
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 .card img {
- width:100%;
- border-radius:10px;
- margin-bottom:15px;
+width:100%;
+border-radius:6px;
+margin-bottom:15px;
+transition:0.4s;
 }
 
-.card button {
- margin-top:10px;
- background:#7c4dff;
- color:white;
- border:none;
- padding:10px 20px;
- border-radius:20px;
- cursor:pointer;
+.card:hover img {
+transform:scale(1.05);
+}
+
+.card h3 {
+font-size:14px;
+letter-spacing:1px;
+}
+
+.card p {
+font-size:13px;
+color:#6d6790;
+}
+
+/* STRIPE BUTTON */
+.buy-btn {
+display:inline-block;
+margin-top:10px;
+text-decoration:none;
+border-bottom:1px solid #7c4dff;
+color:#7c4dff;
+font-size:12px;
+letter-spacing:1px;
+transition:0.3s;
+}
+
+.buy-btn:hover {
+letter-spacing:2px;
 }
 
 /* FOOTER */
 footer {
- text-align:center;
- padding:40px;
- font-size:12px;
- color:#888;
+text-align:center;
+padding:40px;
+font-size:12px;
+color:#8a84a8;
 }
 
-/* SOCIAL ICONS */
 .socials {
- margin-top:15px;
+margin-top:15px;
 }
 
 .socials a {
- margin:0 12px;
- font-size:22px;
- color:#7c4dff;
- transition:0.3s;
+margin:0 10px;
+font-size:20px;
+color:#7c4dff;
+transition:0.3s;
 }
 
 .socials a:hover {
- color:#a86cf7;
- transform:scale(1.2);
+transform:scale(1.2);
 }
 </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
+<header class="navbar fade-in">
+<div class="logo">
+<img src="logo.png" alt="Ethereal Emblems Logo">
+</div>
+</header
 
- <div class="logo">
- <img src="logo.png" alt="Ethereal Emblems Logo">
- </div>
+<nav class="nav-links fade-in">
+<a href="#">HOME</a>
+<a href="#shop">SHOP</a>
+</nav>
 
- <nav class="nav-links">
- <a href="#">HOME</a>
- <a href="#shop">SHOP</a>
- </nav>
-
-</header>
-
-<!-- HERO -->
-<section class="hero">
- <div>
- <h1>Ethereal<br>Emblems</h1>
- <p>
-Each piece is thoughtfully handcrafted using genuine, natural stones, shells and Sea glass making every design as unique as the person who wears it. As a small, online only business, we take pride in creating meaningful jewelry with care and intention, focusing on quality over quantity. From the selection of stones to the final details of our creations that are made to celebrate individuality and bring a touch of nature's elegance into everyday life. </p>
-
- <button onclick="document.getElementById('shop').scrollIntoView()">
- Shop the Collection
- </button>
- </div>
-
- <div>
- <h2>Coming Soon</h2>
- </div>
+<section class="hero fade-in">
+<div class="hero-text">
+<h1>Ethereal<br>Emblems</h1>
+<p>
+Each piece is thoughtfully handcrafted using genuine, natural stones, shells and sea glass, making every design unique.
+</p>
+<button onclick="document.getElementById('shop').scrollIntoView()">
+Shop the Collection
+</button>
+</div>
+<div class="hero-image">Coming Soon</div>
 </section>
+<section id="shop" class="products fade-in">
+<h2>Shop</h2>
 
-<!-- SHOP -->
-<section id="shop" class="products">
- <h2>Shop</h2>
-
- <div class="grid">
-
- <div class="card">
- <img src="https://via.placeholder.com/300">
- <h3>Shell Necklace</h3>
- <p>$10</p>
- <button onclick="window.open(''https://buy.stripe.com/test_aFa4gz5Td84mbFFee5dZ600">
- Buy Now
- </button>
- </div>
-
- </div>
+<div class="card">
+<img src="https://via.placeholder.com/300">
+<h3>Shell Necklace</h3>
+<p>$10</p>
+<a href="https://buy.stripe.com/test_aFa4gz5Td84mbFFee5dZ600" target="_blank" class="buy-btn">Buy Now</a>
+</div>
 </section>
-
-<!-- FOOTER -->
-<footer>
- <p>© 2026 Ethereal Emblems</p>
-
- <div class="socials">
- <a href="https://instagram.com/etherealemblemss" target="_blank"> <i class="fab fa-instagram"></i>
- </a>
-
+<footer class="fade-in">
+<p>© 2026 Ethereal Emblems</p>
+<div class="socials">
+<a href="https://instagram.com/etherealemblemss" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
 <a href="https://tiktok.com/@etherealemblemss" target="_blank">
 <i class="fab fa-tiktok"></i>
 </a>
 </div>
-
 </footer>
-
 </body>
 </html>
