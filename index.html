@@ -26,28 +26,22 @@ color:#2d2152;
 .fade-in {
 opacity:0;
 transform:translateY(20px);
-animation:fadeIn 1.2s ease forwards;
+animation:fadeIn 1s ease forwards;
 }
 
 @keyframes fadeIn {
-to {
-opacity:1;
-transform:translateY(0);
-}
+to { opacity:1; transform:translateY(0); }
 }
 
-/* NAVBAR */
+/* NAV */
 .navbar {
 display:flex;
 justify-content:center;
 padding:30px 20px 10px;
 }
 
-.logo img {
-height:95px;
-}
+.logo img { height:95px; }
 
-/* NAV LINKS */
 .nav-links {
 text-align:center;
 margin-bottom:30px;
@@ -116,10 +110,15 @@ gap:40px;
 
 /* CARD */
 .card {
-background:rgba(255,255,255,0.6);
+background:rgba(255,255,255,0.7);
 padding:20px;
-border-radius:6px;
+border-radius:8px;
 text-align:center;
+transition:0.3s;
+}
+
+.card:hover {
+transform:translateY(-5px);
 }
 
 .card img {
@@ -137,43 +136,28 @@ font-size:13px;
 color:#6d6790;
 }
 
-/* BUY BUTTON */
-.buy-btn {
+.card-buttons {
+display:flex;
+justify-content:center;
+gap:10px;
 margin-top:10px;
-padding:10px 15px;
+}
+
+.btn {
+padding:10px 12px;
 border:none;
 cursor:pointer;
+border-radius:4px;
+font-size:12px;
+}
+
+.view-btn {
+background:#eee;
+}
+
+.buy-btn {
 background:#7c4dff;
 color:white;
-border-radius:4px;
-}
-
-/* FOOTER */
-footer {
-text-align:center;
-padding:40px;
-font-size:12px;
-color:#8a84a8;
-}
-
-.contact-email {
-margin-bottom:10px;
-}
-
-.contact-email a {
-color:#7c4dff;
-text-decoration:none;
-}
-
-/* SOCIALS */
-.socials {
-margin-top:15px;
-}
-
-.socials a {
-margin:0 10px;
-font-size:20px;
-color:#7c4dff;
 }
 
 /* MODAL */
@@ -193,9 +177,15 @@ z-index:1000;
 .modal-content {
 background:white;
 padding:25px;
-max-width:400px;
-border-radius:8px;
+max-width:420px;
+border-radius:10px;
 text-align:center;
+}
+
+.modal-content img {
+width:100%;
+border-radius:8px;
+margin-bottom:15px;
 }
 
 .modal-content h3 {
@@ -215,29 +205,35 @@ justify-content:center;
 gap:10px;
 }
 
-.modal-buttons a {
+.continue {
+background:#7c4dff;
+color:white;
 padding:10px 12px;
 text-decoration:none;
 border-radius:4px;
 font-size:12px;
 }
 
-.continue {
-background:#7c4dff;
-color:white;
-}
-
-.contact {
-background:#eee;
-color:#333;
-}
-
 .close {
-margin-top:10px;
-background:none;
+background:#eee;
 border:none;
-color:#888;
+padding:10px 12px;
+border-radius:4px;
 cursor:pointer;
+}
+
+/* FOOTER */
+footer {
+text-align:center;
+padding:40px;
+font-size:12px;
+color:#8a84a8;
+}
+
+.socials a {
+margin:0 10px;
+font-size:20px;
+color:#7c4dff;
 }
 </style>
 </head>
@@ -258,8 +254,10 @@ cursor:pointer;
 <section class="hero fade-in">
 <div class="hero-text">
 <h1>Ethereal<br>Emblems</h1>
-<p>Each piece is thoughtfully handcrafted using genuine, natural stones, shells and sea glass, making every design unique. We create meaningful jewelry that celebrates individuality and nature’s elegance.</p>
-<button onclick="document.getElementById('shop').scrollIntoView()">Shop Now</button>
+<p>Handcrafted jewelry made from natural stones, shells, and sea glass. Every piece is unique.</p>
+<button onclick="document.querySelector('#shop').scrollIntoView({behavior:'smooth'})">
+Shop Now
+</button>
 </div>
 </section>
 
@@ -268,64 +266,114 @@ cursor:pointer;
 
 <div class="grid">
 
+<!-- PRODUCT CARD -->
 <div class="card">
-<img src="https://via.placeholder.com/300">
+<img src="https://via.placeholder.com/300" id="prod-img-1">
 <h3>Shell Necklace</h3>
 <p>$10</p>
 
-<button class="buy-btn" onclick="openModal()">Buy Now</button>
+<div class="card-buttons">
+<button class="btn view-btn"
+onclick="openPreview(
+'https://via.placeholder.com/600',
+'Shell Necklace',
+'A delicate handmade necklace featuring real seashells collected from the shore. Each piece is unique and inspired by ocean energy.',
+'$10'
+)">
+View
+</button>
+
+<button class="btn buy-btn"
+onclick="openBuy()">
+Buy
+</button>
+</div>
+
 </div>
 
 </div>
 </section>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
+<!-- PRODUCT PREVIEW MODAL -->
+<div id="previewModal" class="modal">
 <div class="modal-content">
 
-<h3>Refund Policy</h3>
-
-<p>
-All sales are final. Refunds are only offered if your item arrives damaged or incorrect.
-</p>
-
+<img id="previewImg" src="">
+<h3 id="previewTitle"></h3>
+<p id="previewDesc"></p>
+<p id="previewPrice"></p>
 
 <div class="modal-buttons">
-<a class="continue" href="https://buy.stripe.com/3cI9ATfte0yo5ry2Ix63K00" target="_blank">
+<a class="continue"
+href="https://buy.stripe.com/3cI9ATfte0yo5ry2Ix63K00"
+target="_blank">
 Continue to Payment
 </a>
 
-<button class="close" onclick="closeModal()">Cancel</button>
+<button class="close" onclick="closePreview()">Close</button>
+</div>
+
+</div>
+</div>
+
+<!-- SIMPLE BUY CONFIRM (optional fallback) -->
+<div id="buyModal" class="modal">
+<div class="modal-content">
+<h3>Proceed to Checkout?</h3>
+<p>You’ll be redirected to secure payment.</p>
+
+<div class="modal-buttons">
+<a class="continue"
+href="https://buy.stripe.com/3cI9ATfte0yo5ry2Ix63K00"
+target="_blank">
+Continue
+</a>
+
+<button class="close" onclick="closeBuy()">Cancel</button>
+</div>
 
 </div>
 </div>
 
 <footer class="fade-in">
 
-<p class="contact-email">
-Contact: <a href="mailto:etherealemblems@gmail.com">etherealemblems@gmail.com</a>
-</p>
-
-<p>© 2026 Ethereal Emblems</p>
+<p>Contact: <a href="mailto:etherealemblems@gmail.com">etherealemblems@gmail.com</a></p>
 
 <div class="socials">
-<a href="https://instagram.com/etherealemblemss" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-<a href="https://tiktok.com/@etherealemblemss" target="_blank">
-<i class="fab fa-tiktok"></i>
-</a>
+<a href="https://instagram.com/etherealemblemss" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://tiktok.com/@etherealemblemss" target="_blank"><i class="fab fa-tiktok"></i></a>
 </div>
+
+<p>© 2026 Ethereal Emblems</p>
 
 </footer>
 
 <script>
-function openModal() {
-document.getElementById("modal").style.display = "flex";
+function openPreview(img, title, desc, price) {
+document.getElementById("previewImg").src = img;
+document.getElementById("previewTitle").textContent = title;
+document.getElementById("previewDesc").textContent = desc;
+document.getElementById("previewPrice").textContent = price;
+
+document.getElementById("previewModal").style.display = "flex";
 }
 
-function closeModal() {
-document.getElementById("modal").style.display = "none";
+function closePreview() {
+document.getElementById("previewModal").style.display = "none";
+}
+
+function openBuy() {
+document.getElementById("buyModal").style.display = "flex";
+}
+
+function closeBuy() {
+document.getElementById("buyModal").style.display = "none";
+}
+
+window.onclick = function(e) {
+if (e.target.classList.contains("modal")) {
+e.target.style.display = "none";
+}
 }
 </script>
 
