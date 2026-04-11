@@ -10,53 +10,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-* {
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-font-family:'Poppins', sans-serif;
+body{
+font-family:'Poppins',sans-serif;
 background:#f6f2fb;
 color:#2d2152;
 }
 
-/* FADE IN */
-.fade-in {
-opacity:0;
-transform:translateY(20px);
-animation:fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-to { opacity:1; transform:translateY(0); }
-}
-
-/* NAV */
-.navbar {
-display:flex;
-justify-content:center;
-padding:30px 20px 10px;
-}
-
-.logo img { height:95px; }
-
-.nav-links {
-text-align:center;
-margin-bottom:30px;
-}
-
-.nav-links a {
-margin:0 15px;
-text-decoration:none;
-font-size:12px;
-letter-spacing:2px;
-color:#3c355f;
-}
-
 /* HERO */
-.hero {
+.hero{
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -64,175 +27,132 @@ padding:80px 60px;
 flex-wrap:wrap;
 }
 
-.hero-text {
-max-width:500px;
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:70px;
+line-height:1;
 }
 
-.hero-text h1 {
-font-family:'Playfair Display', serif;
-font-size:80px;
-line-height:0.95;
-}
-
-.hero-text p {
-margin:25px 0;
-color:#6d6790;
-font-size:14px;
-line-height:1.7;
-}
-
-.hero-text button {
+.hero button{
 background:#7c4dff;
-border:none;
-padding:12px 25px;
 color:white;
+border:none;
+padding:12px 20px;
+border-radius:5px;
 cursor:pointer;
-border-radius:4px;
 }
 
 /* PRODUCTS */
-.products {
-padding:80px 60px;
-}
-
-.products h2 {
-font-family:'Playfair Display', serif;
-font-size:40px;
-margin-bottom:50px;
+.products{
+padding:60px;
 text-align:center;
 }
 
-.grid {
+.grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
+gap:30px;
+margin-top:30px;
 }
 
 /* CARD */
-.card {
-background:rgba(255,255,255,0.7);
-padding:20px;
-border-radius:8px;
-text-align:center;
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
 transition:0.3s;
 }
 
-.card:hover {
+.card:hover{
 transform:translateY(-5px);
 }
 
-.card img {
+.card img{
 width:100%;
-border-radius:6px;
-margin-bottom:15px;
+border-radius:10px;
 }
 
-.card h3 {
-font-size:14px;
-}
-
-.card p {
-font-size:13px;
-color:#6d6790;
-}
-
-.card-buttons {
+.card-buttons{
 display:flex;
 justify-content:center;
 gap:10px;
 margin-top:10px;
 }
 
-.btn {
-padding:10px 12px;
+.btn{
+padding:8px 12px;
 border:none;
 cursor:pointer;
-border-radius:4px;
+border-radius:5px;
 font-size:12px;
 }
 
-.view-btn {
-background:#eee;
-}
-
-.buy-btn {
-background:#7c4dff;
-color:white;
-}
+.view{background:#eee;}
+.buy{background:#7c4dff;color:white;}
 
 /* MODAL */
-.modal {
+.modal{
 display:none;
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.6);
 justify-content:center;
 align-items:center;
 z-index:1000;
 }
 
-.modal-content {
+.modal-content{
 background:white;
-padding:25px;
-max-width:420px;
+padding:20px;
 border-radius:10px;
+width:90%;
+max-width:400px;
 text-align:center;
 }
 
-.modal-content img {
+.modal-content img{
 width:100%;
-border-radius:8px;
-margin-bottom:15px;
-}
-
-.modal-content h3 {
+border-radius:10px;
 margin-bottom:10px;
 }
 
-.modal-content p {
-font-size:13px;
-margin-bottom:10px;
-color:#555;
-}
-
-.modal-buttons {
-margin-top:15px;
+.modal-buttons{
 display:flex;
-justify-content:center;
 gap:10px;
+justify-content:center;
+margin-top:15px;
 }
 
-.continue {
+.continue{
 background:#7c4dff;
 color:white;
-padding:10px 12px;
+padding:10px;
+border-radius:5px;
 text-decoration:none;
-border-radius:4px;
 font-size:12px;
 }
 
-.close {
+.close{
 background:#eee;
 border:none;
-padding:10px 12px;
-border-radius:4px;
+padding:10px;
+border-radius:5px;
 cursor:pointer;
+font-size:12px;
 }
 
 /* FOOTER */
-footer {
+footer{
 text-align:center;
-padding:40px;
+padding:30px;
 font-size:12px;
-color:#8a84a8;
+color:#777;
 }
 
-.socials a {
+.socials a{
 margin:0 10px;
-font-size:20px;
+font-size:18px;
 color:#7c4dff;
 }
 </style>
@@ -240,53 +160,39 @@ color:#7c4dff;
 
 <body>
 
-<header class="navbar fade-in">
-<div class="logo">
-<img src="logo.png" alt="Logo">
-</div>
-</header>
-
-<nav class="nav-links fade-in">
-<a href="#">HOME</a>
-<a href="#shop">SHOP</a>
-</nav>
-
-<section class="hero fade-in">
-<div class="hero-text">
+<!-- HERO -->
+<section class="hero">
+<div>
 <h1>Ethereal<br>Emblems</h1>
 <p>Each piece is thoughtfully handcrafted using genuine, natural stones, shells and sea glass, making every design unique. We create meaningful jewelry that celebrates individuality and nature’s elegance.</p>
-<button onclick="document.querySelector('#shop').scrollIntoView({behavior:'smooth'})">
+<button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
 Shop Now
 </button>
 </div>
 </section>
 
-<section id="shop" class="products fade-in">
+<!-- PRODUCTS -->
+<section id="shop" class="products">
 <h2>Shop</h2>
 
 <div class="grid">
 
-<!-- PRODUCT CARD -->
+<!-- PRODUCT -->
 <div class="card">
-<img src="https://via.placeholder.com/300" id="prod-img-1">
+<img src="https://via.placeholder.com/400">
+
 <h3>Shell Necklace</h3>
 <p>$10</p>
 
 <div class="card-buttons">
-<button class="btn view-btn"
-onclick="openPreview(
+<button class="btn view" onclick="openPreview(
 'https://via.placeholder.com/600',
 'Shell Necklace',
-'A delicate handmade necklace featuring real seashells collected from the shore. Each piece is unique and inspired by ocean energy.',
+'A handmade necklace made from real seashells. Each piece is unique and inspired by the ocean.',
 '$10'
-)">
-View
-</button>
+)">View</button>
 
-<button class="btn buy-btn"
-onclick="openBuy()">
-Buy
-</button>
+<button class="btn buy" onclick="openBuy()">Buy</button>
 </div>
 
 </div>
@@ -298,46 +204,46 @@ Buy
 <div id="previewModal" class="modal">
 <div class="modal-content">
 
-<img id="previewImg" src="">
-<h3 id="previewTitle"></h3>
-<p id="previewDesc"></p>
-<p id="previewPrice"></p>
+<img id="pImg">
+<h3 id="pTitle"></h3>
+<p id="pDesc"></p>
+<p id="pPrice"></p>
 
 <div class="modal-buttons">
-<a class="continue"
-href="https://buy.stripe.com/3cI9ATfte0yo5ry2Ix63K00"
-target="_blank">
-Continue to Payment
+<a class="continue" href="https://buy.stripe.com/3cI9ATfte0yo5ry2Ix63K00" target="_blank">
+Checkout
 </a>
-
 <button class="close" onclick="closePreview()">Close</button>
 </div>
 
 </div>
 </div>
 
-<!-- SIMPLE BUY CONFIRM (optional fallback) -->
+<!-- BUY / RETURN POLICY MODAL -->
 <div id="buyModal" class="modal">
 <div class="modal-content">
-<h3>Proceed to Checkout?</h3>
-<p>You’ll be redirected to secure payment.</p>
+
+<h3>Before You Buy</h3>
+
+<p><strong>Return Policy</strong></p>
+<p>
+All sales are final. Refunds only if item arrives damaged or incorrect, please contact after 7 days of delivery for return.
+</p>
 
 <div class="modal-buttons">
-<a class="continue"
-href="https://buy.stripe.com/3cI9ATfte0yo5ry2Ix63K00"
-target="_blank">
+<a class="continue" href="https://buy.stripe.com/3cI9ATfte0yo5ry2Ix63K00" target="_blank">
 Continue
 </a>
-
 <button class="close" onclick="closeBuy()">Cancel</button>
 </div>
 
 </div>
 </div>
 
-<footer class="fade-in">
+<!-- FOOTER -->
+<footer>
 
-<p>Contact: <a href="mailto:etherealemblems@gmail.com">etherealemblems@gmail.com</a></p>
+<p>Contact: etherealemblems@gmail.com</p>
 
 <div class="socials">
 <a href="https://instagram.com/etherealemblemss" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -349,30 +255,30 @@ Continue
 </footer>
 
 <script>
-function openPreview(img, title, desc, price) {
-document.getElementById("previewImg").src = img;
-document.getElementById("previewTitle").textContent = title;
-document.getElementById("previewDesc").textContent = desc;
-document.getElementById("previewPrice").textContent = price;
+function openPreview(img,title,desc,price){
+document.getElementById('pImg').src=img;
+document.getElementById('pTitle').innerText=title;
+document.getElementById('pDesc').innerText=desc;
+document.getElementById('pPrice').innerText=price;
 
-document.getElementById("previewModal").style.display = "flex";
+document.getElementById('previewModal').style.display='flex';
 }
 
-function closePreview() {
-document.getElementById("previewModal").style.display = "none";
+function closePreview(){
+document.getElementById('previewModal').style.display='none';
 }
 
-function openBuy() {
-document.getElementById("buyModal").style.display = "flex";
+function openBuy(){
+document.getElementById('buyModal').style.display='flex';
 }
 
-function closeBuy() {
-document.getElementById("buyModal").style.display = "none";
+function closeBuy(){
+document.getElementById('buyModal').style.display='none';
 }
 
-window.onclick = function(e) {
-if (e.target.classList.contains("modal")) {
-e.target.style.display = "none";
+window.onclick=function(e){
+if(e.target.classList.contains('modal')){
+e.target.style.display='none';
 }
 }
 </script>
